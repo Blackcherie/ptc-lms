@@ -18,8 +18,8 @@ export default function Dashboard() {
   const getData = async () => {
     try {
       // Fetch counts for students and staff
-      const studentsResponse = await axios.get("https://demo-lms.vercel.app/student/getRole/student");
-      const staffResponse = await axios.get("https://demo-lms.vercel.app/student/getRole/staff");
+      const studentsResponse = await axios.get("https://ptc-lms.vercel.app/student/getRole/student");
+      const staffResponse = await axios.get("https://ptc-lms.vercel.app/student/getRole/staff");
 
       const studentsCount = studentsResponse.data.length;
       const staffCount = staffResponse.data.length;
@@ -38,7 +38,7 @@ export default function Dashboard() {
 
   const getBooks = async () => {
     try {
-      const response = await axios.get("https://demo-lms.vercel.app/book/getBook");
+      const response = await axios.get("https://ptc-lms.vercel.app/book/getBook");
       const newData = response.data;
       setBooks(newData?.length);
     } catch (error) {
@@ -48,7 +48,7 @@ export default function Dashboard() {
 
   const getAllot = async () => {
     try {
-      const response = await axios.get("https://demo-lms.vercel.app/allot/getAllot");
+      const response = await axios.get("https://ptc-lms.vercel.app/allot/getAllot");
       const newData = response.data;
       setLending(newData?.length);
     } catch (error) {
@@ -58,7 +58,7 @@ export default function Dashboard() {
 
   const getRemain = async () => {
     try {
-      const response = await axios.get("https://demo-lms.vercel.app/allot/getAllotNotReturned");
+      const response = await axios.get("https://ptc-lms.vercel.app/allot/getAllotNotReturned");
       const newData = response.data;
       setRemaining(newData?.length);
     } catch (error) {

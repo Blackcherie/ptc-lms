@@ -189,7 +189,7 @@ function App() {
     const bookName = event.target.value;
   
     try {
-      const response = await axios.get(`https://demo-lms.vercel.app/book/validateName/${bookName}`);
+      const response = await axios.get(`https://ptc-lms.vercel.app/book/validateName/${bookName}`);
       const {isIdTaken} = response.data;
   
       if (isIdTaken) {
@@ -207,7 +207,7 @@ function App() {
     const reg_no = event.target.value;
 
     try {
-      const response = await axios.get(`https://demo-lms.vercel.app/book/validateReg/${reg_no}`);
+      const response = await axios.get(`https://ptc-lms.vercel.app/book/validateReg/${reg_no}`);
       const {isIdTaken} = response.data;
   
       if (isIdTaken) {
@@ -229,7 +229,7 @@ function App() {
     const student_id = event.target.value;
   
     try {
-      const response = await axios.get(`https://demo-lms.vercel.app/student/validateId/${student_id}`);
+      const response = await axios.get(`https://ptc-lms.vercel.app/student/validateId/${student_id}`);
       const { isIdTaken } = response.data;
   
       if (isIdTaken) {
@@ -294,11 +294,11 @@ function App() {
     try {
       if (e.target.value === "") {
         // If the search value is empty, fetch all allotments
-        const response = await axios.get('https://demo-lms.vercel.app/allot/getAllot');
+        const response = await axios.get('https://ptc-lms.vercel.app/allot/getAllot');
         historyArr = response.data;
       } else {
         // If there is a search value, fetch allotments for the specific student ID
-        const response = await axios.get(`https://demo-lms.vercel.app/allot/getAllotByStudentId/${e.target.value}`);
+        const response = await axios.get(`https://ptc-lms.vercel.app/allot/getAllotByStudentId/${e.target.value}`);
         historyArr = response.data;
       }
   
@@ -329,11 +329,11 @@ function App() {
             alert("Enter a valid number");
         } else {
             try {
-              // https://demo-lms.vercel.app
+              // https://ptc-lms.vercel.app
                 console.log("studentDetails before ---->", studentDetails);
 
                 // Make a POST request to your Express server
-                const response = await axios.post('https://demo-lms.vercel.app/student/postStudent', {
+                const response = await axios.post('https://ptc-lms.vercel.app/student/postStudent', {
                     id: studentDetails.student_id,
                     name: studentDetails.student_name,
                     role: studentDetails.student_role ,  // Assuming 'role' is a required field and set it to 'student'
@@ -376,7 +376,7 @@ function App() {
 
   const getStudents = async (role) => {
     try {
-      const response = await axios.get(`https://demo-lms.vercel.app/student/getRole/${role}`);
+      const response = await axios.get(`https://ptc-lms.vercel.app/student/getRole/${role}`);
       const students = response.data;
       console.log(students);
   
@@ -394,7 +394,7 @@ function App() {
       console.log("Deleting student with ID:", studentId);
       if (studentId) {
         // Make an Axios DELETE request to your server endpoint
-        const response = await axios.delete(`https://demo-lms.vercel.app/student/deleteStudent/${studentId}`);
+        const response = await axios.delete(`https://ptc-lms.vercel.app/student/deleteStudent/${studentId}`);
         console.log("Delete response:", response.data);
       }
     } catch (error) {
@@ -421,7 +421,7 @@ function App() {
     try {
         if (studentId) {
             // Make an Axios PUT request to your server endpoint for updating a student
-            const response = await axios.put(`https://demo-lms.vercel.app/student/updateStudent/${studentId}`, {
+            const response = await axios.put(`https://ptc-lms.vercel.app/student/updateStudent/${studentId}`, {
                 // Assuming editStudentDetails is an object with updated student details
                 id:editStudentDetails.student_id,
                 name: editStudentDetails.student_name,
@@ -446,7 +446,7 @@ function App() {
   const handleEditStudent = async (studentId) => {
     try {
       // Make a request to fetch the student details by their ID
-      const response = await fetch(`https://demo-lms.vercel.app/student/getId/${studentId}`);
+      const response = await fetch(`https://ptc-lms.vercel.app/student/getId/${studentId}`);
       const studentData = await response.json();
       
       if (response.ok) {
@@ -548,7 +548,7 @@ function App() {
 
   const getBooks = async () => {
     try {
-      const response = await axios.get(`https://demo-lms.vercel.app/book/getBook`);
+      const response = await axios.get(`https://ptc-lms.vercel.app/book/getBook`);
       const books = response.data;
       console.log(books);
   
@@ -574,7 +574,7 @@ function App() {
             console.log("bookDetails before ---->", bookDetails);
 
             // Make a POST request to your Express server for adding a book
-            const response = await axios.post('https://demo-lms.vercel.app/book/postBook', {
+            const response = await axios.post('https://ptc-lms.vercel.app/book/postBook', {
                 name: bookDetails.book_name,
                 reg_no: bookDetails.book_reg,
                 price: bookDetails.book_price,
@@ -606,7 +606,7 @@ const deleteBook = async (reg_no) => {
   try {
 
     // Make an Axios DELETE request to your server endpoint for deleting a book
-    const response = await axios.delete(`https://demo-lms.vercel.app/book/deleteBook/${reg_no}`);
+    const response = await axios.delete(`https://ptc-lms.vercel.app/book/deleteBook/${reg_no}`);
 
     console.log('Delete Book response:', response.data);
 
@@ -638,7 +638,7 @@ const handleEditBookSubmit = async (reg_no) => {
   try {
     if (reg_no) {
       // Make an Axios PUT request to your server endpoint for updating a book
-      const response = await axios.put(`https://demo-lms.vercel.app/book/updateBook/${reg_no}`, {
+      const response = await axios.put(`https://ptc-lms.vercel.app/book/updateBook/${reg_no}`, {
         // Assuming editBookDetails is an object with updated book details
         name: editBookDetails.book_name,
         price: editBookDetails.book_price,
@@ -666,7 +666,7 @@ const handleEditBookSubmit = async (reg_no) => {
 const handleEditBook = async (reg_no) => {
   try {
     // Make a request to fetch the book details by registration number
-    const response = await fetch(`https://demo-lms.vercel.app/book/getBook/${reg_no}`);
+    const response = await fetch(`https://ptc-lms.vercel.app/book/getBook/${reg_no}`);
     const bookData = await response.json();
 
     if (response.ok) {
@@ -740,7 +740,7 @@ const handleEditBook = async (reg_no) => {
 
   const getHistory = async () => {
     try {
-      const response = await axios.get(`https://demo-lms.vercel.app/allot/getAllot`);
+      const response = await axios.get(`https://ptc-lms.vercel.app/allot/getAllot`);
       const allots = response.data;
 
       setHistory(allots);
@@ -769,7 +769,7 @@ const handleEditBook = async (reg_no) => {
       ) {
         try {
           // Make a POST request to your Express server
-          const response = await axios.post('https://demo-lms.vercel.app/allot/postAllotBook', {
+          const response = await axios.post('https://ptc-lms.vercel.app/allot/postAllotBook', {
             studentId: allotDetails.studentId,
             studentName: allotDetails.studentName,
             studentRole: allotDetails.studentRole,
@@ -810,7 +810,7 @@ const handleEditBook = async (reg_no) => {
       if (enteredStudentId) {
         try {
           // Make an API call to fetch student details based on the ID
-          const response = await axios.get(`https://demo-lms.vercel.app/student/getId/${enteredStudentId}`);
+          const response = await axios.get(`https://ptc-lms.vercel.app/student/getId/${enteredStudentId}`);
           const student = response.data;
     
           // Update the state with the fetched student name
@@ -834,7 +834,7 @@ const handleEditBook = async (reg_no) => {
     
       if (enteredBookName) {
         try {
-          const response = await axios.get(`https://demo-lms.vercel.app/book/getBookByName/${enteredBookName}`);
+          const response = await axios.get(`https://ptc-lms.vercel.app/book/getBookByName/${enteredBookName}`);
           const book = response.data;
     
           // Update the state with the fetched book ID
@@ -861,7 +861,7 @@ const handleEditBook = async (reg_no) => {
     
         alert(studentId);
     
-        await axios.put(`https://demo-lms.vercel.app/allot/updateAllot/${studentId}`, {
+        await axios.put(`https://ptc-lms.vercel.app/allot/updateAllot/${studentId}`, {
           return_status: newStatus,
         });
     
@@ -887,7 +887,7 @@ const handleEditBook = async (reg_no) => {
     const handleApplyFilter = async () => {
       try {
         // Make an API call to get filtered allotments
-        const response = await axios.get(`https://demo-lms.vercel.app/allot/getFilteredAllot?startDate=${startDate}&endDate=${endDate}`);
+        const response = await axios.get(`https://ptc-lms.vercel.app/allot/getFilteredAllot?startDate=${startDate}&endDate=${endDate}`);
         const filteredAllotments = response.data;
   
         // Process the filtered allotments as needed
@@ -1013,7 +1013,7 @@ const historyColumns = useMemo(
           // Add more properties as needed for student
   
           // Make an API request to upload student data
-          const response = await axios.post("https://demo-lms.vercel.app/student/postStudent", obj);
+          const response = await axios.post("https://ptc-lms.vercel.app/student/postStudent", obj);
           console.log(response.data); // Log the response from the server
         } else {
           console.error('Invalid data format in CSV row:', x);
@@ -1038,7 +1038,7 @@ const historyColumns = useMemo(
           // Add more properties as needed for student
   
           // Make an API request to upload student data
-          const response = await axios.post("https://demo-lms.vercel.app/book/postBook", obj);
+          const response = await axios.post("https://ptc-lms.vercel.app/book/postBook", obj);
           console.log(response.data); // Log the response from the server
         } else {
           console.error('Invalid data format in CSV row:', x);
@@ -1096,7 +1096,7 @@ const historyColumns = useMemo(
     try {
       // Assume you already have JSON data (replace this with your actual JSON data)
       const response = await axios.get(
-        `https://demo-lms.vercel.app/allot/getAllot`
+        `https://ptc-lms.vercel.app/allot/getAllot`
       );
 
       const jsonData =  response.data;

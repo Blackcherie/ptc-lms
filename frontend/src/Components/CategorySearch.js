@@ -11,7 +11,7 @@ const CategorySearch = ({ handleAllotChange }) => {
     async function fetchBooks() {
       try {
         if (bookName !== null) { // Check if bookName is not null before making the request
-          const response = await axios.get(`https://demo-lms.vercel.app/book/getBookByName/${bookName}`);
+          const response = await axios.get(`https://ptc-lms.vercel.app/book/getBookByName/${bookName}`);
           setFilterBooks(response.data ? [response.data] : []);
         }
       } catch (error) {
@@ -21,7 +21,7 @@ const CategorySearch = ({ handleAllotChange }) => {
 
     const getBooks = async () => {
       try {
-        const response = await axios.get(`https://demo-lms.vercel.app/book/getBook`);
+        const response = await axios.get(`https://ptc-lms.vercel.app/book/getBook`);
         const books = response.data;
         console.log(books);
     
